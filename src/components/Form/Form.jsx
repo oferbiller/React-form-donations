@@ -253,12 +253,13 @@ const Form = ({ updateForm }) => {
         <div className='header'>
           <img src='/content/Logo.png' alt='LOGO' className='logo' />
           <div className='title'>
-            {updateForm ? 'עדכון טופס' : 'בקשה לתרומה לציוד לחימה '}
+            {updateForm ? 'עדכון טופס' : 'בקשת ציוד לכח כוננות'}
           </div>
           <div className='description' hidden={updateForm}>
-            טופס זה מיועד למשרתים פעילים בצה״ל סדיר ,מילואים וקבע. אם הינך אדם
-            פרטי וברצונך לסייע לכח לוחם בהשלמת ציוד , אנא הפנה טופס זה לקצין
-            האמל״ח או לגורם רלוונטי ביחידה. נא לרכז את כל הפריטים בטופס אחד
+
+			
+			טופס זה מיועד לכחות כוננות קיימים ובהתהוות.
+			אנו מבקשים שהטופס ימולא רק בידי איש הקשר הרלוונטי שאחראי באופן רשמי על הצטיידות כח הכוננות
           </div>
         </div>
         <form className='form' onSubmit={handleSubmit(onSubmit)}>
@@ -329,7 +330,7 @@ const Form = ({ updateForm }) => {
             </div>
             <div className='field-container'>
               <div className='field-title'>
-                <label>יחידה</label>
+                <label>ישוב</label>
                 <span className='required'>*</span>
                 <div className='error-message'>{errors.unit?.message}</div>
               </div>
@@ -337,7 +338,7 @@ const Form = ({ updateForm }) => {
                 disabled={updateForm}
                 className='text-field'
                 type='text'
-                placeholder='יחידה'
+                placeholder='ישוב'
                 {...register('unit', { required: 'חובה' })}
               />
             </div>
@@ -347,13 +348,21 @@ const Form = ({ updateForm }) => {
                 <span className='required'>*</span>
                 <div className='error-message'>{errors.job?.message}</div>
               </div>
-              <input
-                disabled={updateForm}
-                className='text-field'
-                type='text'
-                placeholder='תפקיד'
+			  
+			  <select
+                className='select-field'
                 {...register('job', { required: 'חובה' })}
-              />
+              >
+                <option disabled={true} value=''>
+                  תפקיד
+                </option>
+
+                <option value='רבשצ'>רבשצ</option>
+                <option value='קמבץ'>קמבץ</option>
+                <option value='אחר'>אחר</option>
+              </select>
+			  
+			  
             </div>
             <div className='field-container'>
               <div className='field-title'>
